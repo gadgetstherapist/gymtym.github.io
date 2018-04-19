@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8" />
+	<title>BMI Calculator</title>
+	<!--BMI Calculator Initial Build-->
+	<!--BMI Calculator Representational Build v.0.2-->
+	<!--Graphics and Design used in this BMI Calcualtor Build is not Final-->
+	<!--Final BMI Calculator Build will use Bootstrap FrontEnt Framework-->
+	<!--This Build has Limited Functionality-->
+	<!--Final Build Will have More Functions and Features-->
+	<!--JavaScript & CSS code will be maintained by external relative Files-->
+	<!--JavaScript Functions and Code-->
+    <script type="text/javascript">
+        function computeBMI() {
+            // user inputs
+            var height = Number(document.getElementById("height").value);
+            var heightunits = document.getElementById("heightunits").value;
+            var weight = Number(document.getElementById("weight").value);
+            var weightunits = document.getElementById("weightunits").value;
+
+
+            //Convert all units to metric
+            if (heightunits == "inches") height /= 39.3700787;
+            if (weightunits == "lb") weight /= 2.20462;
+
+            //Perform calculation
+
+            //        var BMI = weight /Math.pow(height, 2)*10000;
+            var BMI = Math.round(weight / Math.pow(height, 2) * 10000);
+
+            //Display result of calculation
+            document.getElementById("output").innerText = Math.round(BMI * 100) / 100;
+
+            var output = Math.round(BMI * 100) / 100
+            if (output < 18.5)
+                document.getElementById("comment").innerText = "Underweight";
+            else if (output >= 18.5 && output <= 25)
+                document.getElementById("comment").innerText = "Normal";
+            else if (output >= 25 && output <= 30)
+                document.getElementById("comment").innerText = "Obese";
+            else if (output > 30)
+                document.getElementById("comment").innerText = "Overweight";
+            // document.getElementById("answer").value = output; 
+        }
+    </script>
+	<!--CSS styling goes here!-->
+	<style>
+		body {
+			background-color: darkslategrey;
+		}
+		.mh {
+			font-family: impact;
+			color: snow;
+			font-size: 400%;
+			margin: 20px;
+			text-align: center;
+		}
+		.button {
+			width: 98%;
+			border: 0px;
+			background-color: black;
+			color: orangered;
+			font-family: "lucida sans";
+			padding: 5px;
+		}
+		#ft {
+			color: white;
+			font-family: arial;
+		}
+		.bmibox {
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 120px;
+			display: block;
+			width: 30%;
+			padding: 25px;
+			border: 2px solid orange;
+		}
+		.sbox {
+			color: yellow;
+			font-family: arial;
+		}
+		.foot {
+			color: gainsboro;
+			font-family: "arial";
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+    <div class="wrapper">
+		<header>
+			<h1 class="mh">Body Mass Index Calculator</h1>
+		</header>
+		<section class="bmibox">
+			<form action="#">
+			<table>
+				<tr><td><span id="ft">Enter your height</span>:</td><td><input type="text" id="height"/>
+				<select type="multiple" id="heightunits" style="width: 22%;">
+					<option value="metres" selected="selected">M</option>
+					<option value="inches">INCH</option>
+				</select></td></tr>
+				<tr><td><span id="ft">Enter your weight:</span></td><td><input type="text" id="weight"/>
+				<select type="multiple" id="weightunits" style="width: 22%;">
+					<option value="kg" selected="selected">KGS</option>
+					<option value="lb">PND</option>
+				</select></td></tr>
+				<tr><td></td><td><input type="button" class="button" value="SCORE BMI" onclick="computeBMI();"></td></tr>
+			<table>
+			</form>
+		</section>
+		<section class="sbox">
+			Your BMI is: <span id="output">?</span><br />
+			This means you are: <span id="comment"> ?</span>
+		</section>
+	</div>	
+	<footer class="foot">
+		<p>Made With Love By, <strong>YTG</strong></p>
+	</footer>
+</body>
+</html>
